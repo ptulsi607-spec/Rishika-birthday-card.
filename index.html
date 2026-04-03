@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Rishika 💖</title>
+<style>
+body { margin:0; background:black; color:white; font-family:sans-serif; text-align:center; overflow:hidden; }
+h1 { text-shadow:0 0 10px pink,0 0 20px pink; }
+.container { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+.hidden {display:none;}
+button {padding:12px 20px; border-radius:25px; border:none; background:pink; }
+#text { width:80%; margin:auto; font-size:18px; }
+img { width:250px; border-radius:20px; margin-top:20px; }
+.confetti { position:absolute; width:10px; height:10px; top:-10px; animation:fall 5s linear infinite; }
+@keyframes fall { to {transform:translateY(100vh);} }
+</style>
+</head>
+<body>
+
+<!-- CONFETTI -->
+<script>
+for(let i=0;i<50;i++){
+  let c=document.createElement("div");
+  c.className="confetti";
+  c.style.left=Math.random()*100+"%";
+  c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+  document.body.appendChild(c);
+}
+</script>
+
+<!-- START -->
+<div class="container" id="start">
+  <h1>Tap to Open 💌</h1>
+  <button onclick="start()">Open</button>
+</div>
+
+<!-- CARD -->
+<div class="container hidden" id="card">
+  <h1>Happy Birthday Rishika 🎂💖</h1>
+  <p id="text"></p>
+
+  <!-- Photos Slideshow -->
+  <img id="slide" src="https://drive.google.com/uc?export=view&id=1s_87n2Y8ILkCYdO3MZxW4AYgjo32nizd">
+
+</div>
+
+<!-- Music -->
+<audio id="music" loop>
+  <source src="https://drive.google.com/uc?export=view&id=1RPWY-VPEIKBclyuzBr1bCXnB9B8p0f1O" type="audio/mp3">
+</audio>
+
+<script>
+function start(){
+  document.getElementById("start").style.display="none";
+  document.getElementById("card").style.display="block";
+  document.getElementById("music").play();
+  typeText();
+}
+
+/* Typing effect */
+let msg="Tu sirf meri bestfriend nahi hai... tu meri aadat hai 💖\n\nTere bina sab boring lagta hai 😔\n\nThank you for always being there 🥺\n\nStay same, stay crazy 😜✨\n\nHappy Birthday once again Rishika 🎂💖";
+let i=0;
+function typeText(){
+  if(i<msg.length){
+    document.getElementById("text").innerHTML+=msg.charAt(i);
+    i++;
+    setTimeout(typeText,40);
+  }
+}
+
+/* Slideshow */
+let images=[
+"https://drive.google.com/uc?export=view&id=1s_87n2Y8ILkCYdO3MZxW4AYgjo32nizd",
+"https://drive.google.com/uc?export=view&id=1aKSLEXVyYJzXzKCOMBgzaK-ubzGOPncG",
+"https://drive.google.com/uc?export=view&id=1TjqYGNCy7OZVN0_NVM084JDqMMCfRln6"
+];
+let j=0;
+setInterval(()=>{
+  j=(j+1)%images.length;
+  document.getElementById("slide").src=images[j];
+},2000);
+
+</script>
+</body>
+  </html>
